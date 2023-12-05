@@ -30,7 +30,7 @@ def predict_with_model(model, input_values):
     :return: Die Vorhersage des Modells.
     """
     # Laden des Skalierers
-    scaler_filename = 'ScaleFactorsX.pkl'  # Pfad zu Ihrer Pickle-Datei
+    scaler_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei
     scaler = load_scaler(scaler_filename)
 
     X = np.array([input_values])
