@@ -12,6 +12,10 @@ import numpy as np
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
+def scale_input(input_values, scaler):
+    X_scaled = scaler.transform([input_values])
+    return X_scaled
+    
 def predict_with_model(model, input_values):
     """
     Führt eine Vorhersage mit dem gegebenen Modell und den Eingabewerten durch.
@@ -20,8 +24,13 @@ def predict_with_model(model, input_values):
     :param input_values: Die Eingabewerte als Liste oder Array.
     :return: Die Vorhersage des Modells.
     """
+    # Laden des Skalierers
+    scaler_filename = 'ScaleFactorsX.pkl'  # Pfad zu Ihrer Pickle-Datei
+    scaler = load_scaler(scaler_filename)
+
     X = np.array([input_values])
-    prediction = model.predict(X)
+    input_values_scaled = scale_input(X, scaler)
+    prediction = model.predict(input_values_scaled)
     return prediction
 
 def main():
