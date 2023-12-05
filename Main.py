@@ -3,7 +3,7 @@ import streamlit as st
 def main():
     # Set up the main page
     st.title("Meine Streamlit App")
-    st.header("Willkommen auf der Hauptseite")
+    st.header("Willkommen auf der Hauptseite Test")
     
     # Display some test text
     st.write("Das ist ein Testtext auf der Hauptseite der Streamlit-App.")
