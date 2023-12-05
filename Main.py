@@ -11,7 +11,12 @@ import numpy as np
 # Laden des trainierten Modells
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
-
+# Funktion zum Laden des Skalierers aus der Pickle-Datei
+def load_scaler(filename):
+    with open(filename, 'rb') as file:
+        scaler = pickle.load(file)
+    return scaler
+    
 def scale_input(input_values, scaler):
     X_scaled = scaler.transform([input_values])
     return X_scaled
