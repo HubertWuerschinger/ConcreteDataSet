@@ -1,4 +1,7 @@
 import streamlit as st
+import pickle
+model = pickle.load(open(filename, 'rb'))
+
 
 def main():
     # Set up the main page
