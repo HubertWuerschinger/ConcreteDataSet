@@ -1,5 +1,11 @@
 import streamlit as st
 import pickle
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+from sklearn.ensemble import RandomForestRegressor
+
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
