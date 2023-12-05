@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
 
