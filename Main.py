@@ -8,17 +8,24 @@ filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
 
-# Funktion zum Laden des Skalierers aus der Pickle-Datei
 def load_scaler(filename):
     with open(filename, 'rb') as file:
         scaler = pickle.load(file)
     return scaler
 
+# Laden der Skalierer
+scaler_X = load_scaler('ScaleFaktorsX.sav')
+scaler_Y = load_scaler('ScaleFaktorsy.sav')
+
+# Überprüfen der Typen
+print("Typ von scaler_X:", type(scaler_X))
+print("Typ von scaler_Y:", type(scaler_Y))
+
 # Laden des Skalierers für X und Y
-scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
-scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
-scaler_X = load_scaler(scaler_X_filename)
-scaler_Y = load_scaler(scaler_Y_filename)
+#scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
+#scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
+#scaler_X = load_scaler(scaler_X_filename)
+#scaler_Y = load_scaler(scaler_Y_filename)
 
 # Funktion zum Skalieren der Eingabedaten
 def scale_input(input_values, scaler):
