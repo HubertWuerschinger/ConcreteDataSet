@@ -17,9 +17,7 @@ def load_scaler(filename):
 scaler_X = load_scaler('ScaleFaktorsX.sav')
 scaler_Y = load_scaler('ScaleFaktorsy.sav')
 
-# Überprüfen der Typen
-print("Typ von scaler_X:", type(scaler_X))
-print("Typ von scaler_Y:", type(scaler_Y))
+
 
 # Laden des Skalierers für X und Y
 #scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
@@ -57,7 +55,9 @@ def main():
 
     st.write("Skalierungsfaktoren und Min-Werte für Y:")
     st.write("Skalierungsfaktoren:", scaler_Y)
-    
+    # Überprüfen der Typen
+    st.write("Typ von scaler_X:", type(scaler_X))
+    st.write("Typ von scaler_Y:", type(scaler_Y))    
 
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
