@@ -15,7 +15,7 @@ def load_scaler(filename):
 
 # Laden des Skalierers für X und Y
 scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
-scaler_Y_filename = 'ScaleFaktorsY.sav'  # Pfad zu Ihrer Pickle-Datei für Y
+scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
 scaler_X = load_scaler(scaler_X_filename)
 scaler_Y = load_scaler(scaler_Y_filename)
 
