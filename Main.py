@@ -22,9 +22,11 @@ scaler_Y = load_scaler(scaler_Y_filename)
 
 # Funktion zum Skalieren der Eingabedaten
 def scale_input(input_values, scaler):
-    X_scaled = scaler.transform(np.array([input_values]))
-    return X_scaled  
-
+    # Konvertiert die Eingabeliste in ein 2D-Array
+    X = np.array([input_values])  # Erzeugt ein Array der Form (1, n_features)
+    X_scaled = scaler.transform(X)
+    return X_scaled
+    
 def predict_with_model(model, input_values, scaler_X):
     input_values_scaled = scale_input(input_values, scaler_X)
     prediction = model.predict(input_values_scaled)
