@@ -18,7 +18,7 @@ def load_scaler(filename):
     return scaler
     
 def scale_input(input_values, scaler):
-    X_scaled = scaler.transform([input_values])
+    X_scaled = scaler.transform(input_values)
     return X_scaled
     
 def predict_with_model(model, input_values):
