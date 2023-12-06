@@ -1,40 +1,30 @@
 import streamlit as st
 import pickle
-
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
-from sklearn.ensemble import RandomForestRegressor
-import streamlit as st
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 
 # Laden des trainierten Modells
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
+
 # Funktion zum Laden des Skalierers aus der Pickle-Datei
 def load_scaler(filename):
     with open(filename, 'rb') as file:
         scaler = pickle.load(file)
     return scaler
-    
-def scale_input(input_values, scaler):
-    X_scaled = scaler.transform(input_values)
-    return X_scaled
-    
-def predict_with_model(model, input_values):
-    """
-    Führt eine Vorhersage mit dem gegebenen Modell und den Eingabewerten durch.
 
-    :param model: Das trainierte Modell.
-    :param input_values: Die Eingabewerte als Liste oder Array.
-    :return: Die Vorhersage des Modells.
-    """
+# Funktion zum Anwenden der Skalierung auf die Eingabedaten
+def scale_input(input_values, scaler):
+    X_scaled = scaler.transform(np.array([input_values]))
+    return X_scaled
+
+# Funktion zur Vorhersage mit dem Modell
+def predict_with_model(model, input_values):
     # Laden des Skalierers
     scaler_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei
     scaler = load_scaler(scaler_filename)
 
-    X = np.array([input_values])
-    input_values_scaled = scale_input(X, scaler)
+    input_values_scaled = scale_input(input_values, scaler)
     prediction = model.predict(input_values_scaled)
     return prediction
 
@@ -42,9 +32,6 @@ def main():
     st.title("Meine Streamlit App")
     st.header("Willkommen auf der Hauptseite Test")
     
-    # Display some test text
-    st.write("Das ist ein Testtext auf der Hauptseite der Streamlit-App.")
-
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
 
