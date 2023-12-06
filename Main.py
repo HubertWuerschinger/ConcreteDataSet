@@ -60,13 +60,18 @@ def main():
         values.append(value)
 
     # Vorhersage-Button und Ausgabefeld
+   # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
+        # Skalierung der Eingabewerte
+        input_values_scaled = scale_input(values, scaler_X)
+
         # Vorhersage mit dem Modell machen
-        X_scaled = scaler_X*values
-        prediction = model.predict(values.reshape(-1, 1))
+        prediction = model.predict(input_values_scaled)
+
         # Anzeige der Vorhersage in einem Ausgabefeld
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
+
 
 if __name__ == "__main__":
     main()
