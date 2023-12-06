@@ -49,15 +49,15 @@ def main():
     st.write("Skalierungsfaktoren:", scaler_X.scale_)
     st.write("Min-Werte:", scaler_X.min_)
 
-    st.write("Skalierungsfaktoren und Min-Werte für Y:")
-    st.write("Skalierungsfaktoren:", scaler_Y.scale_)
-    st.write("Min-Werte:", scaler_Y.min_)
+    if isinstance(scaler_X, MinMaxScaler):
+        st.write("Skalierungsfaktoren und Min-Werte für X:")
+        st.write("Skalierungsfaktoren:", scaler_X.scale_)
+        st.write("Min-Werte:", scaler_X.min_)
 
-    st.write("Skalierungsfaktoren und Min-Werte für Y:")
-    st.write("Skalierungsfaktoren:", scaler_Y)
-    # Überprüfen der Typen
-    st.write("Typ von scaler_X:", type(scaler_X))
-    st.write("Typ von scaler_Y:", type(scaler_Y))    
+    if isinstance(scaler_Y, MinMaxScaler):
+        st.write("Skalierungsfaktoren und Min-Werte für Y:")
+        st.write("Skalierungsfaktoren:", scaler_Y.scale_)
+        st.write("Min-Werte:", scaler_Y.min_)
 
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
