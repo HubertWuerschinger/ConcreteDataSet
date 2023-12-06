@@ -7,6 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
+
 # Funktion zum Laden des Skalierers aus der Pickle-Datei
 def load_scaler(filename):
     with open(filename, 'rb') as file:
@@ -15,11 +16,14 @@ def load_scaler(filename):
 
 # Laden des Skalierers für X und Y
 scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
-scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
+scaler_Y_filename = 'ScaleFaktorsY.sav'  # Pfad zu Ihrer Pickle-Datei für Y
 scaler_X = load_scaler(scaler_X_filename)
 scaler_Y = load_scaler(scaler_Y_filename)
 
-  
+# Funktion zum Skalieren der Eingabedaten
+def scale_input(input_values, scaler):
+    X_scaled = scaler.transform(np.array([input_values]))
+    return X_scaled  
 
 def predict_with_model(model, input_values, scaler_X):
     input_values_scaled = scale_input(input_values, scaler_X)
