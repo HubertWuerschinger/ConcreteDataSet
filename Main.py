@@ -19,9 +19,7 @@ scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
 scaler_X = load_scaler(scaler_X_filename)
 scaler_Y = load_scaler(scaler_Y_filename)
 
-def scale_input(input_values, scaler):
-    X_scaled = scaler_X.fit_transform(input_values)
-    return X_scaled
+  
 
 def predict_with_model(model, input_values, scaler_X):
     input_values_scaled = scale_input(input_values, scaler_X)
@@ -64,7 +62,8 @@ def main():
     # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
         # Vorhersage mit dem Modell machen
-        prediction = predict_with_model(model, values, scaler_X)
+        X_scaled = scaler_X.fit_transform(input_values)
+        prediction = predict_with_model(model, values, X_scaled)
         # Anzeige der Vorhersage in einem Ausgabefeld
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
