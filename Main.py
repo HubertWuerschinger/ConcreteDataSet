@@ -7,23 +7,39 @@ from sklearn.preprocessing import MinMaxScaler
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
-# Laden des Skalierers
-scaler_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei
-with open(scaler_filename, 'rb') as file:
-    scaler = pickle.load(file)
+# Funktion zum Laden des Skalierers aus der Pickle-Datei
+def load_scaler(filename):
+    with open(filename, 'rb') as file:
+        scaler = pickle.load(file)
+    return scaler
+
+# Laden des Skalierers für X und Y
+scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
+scaler_Y_filename = 'ScaleFaktorsY.sav'  # Pfad zu Ihrer Pickle-Datei für Y
+scaler_X = load_scaler(scaler_X_filename)
+scaler_Y = load_scaler(scaler_Y_filename)
 
 def scale_input(input_values, scaler):
     X_scaled = scaler.transform(np.array([input_values]))
     return X_scaled
 
-def predict_with_model(model, input_values, scaler):
-    input_values_scaled = scale_input(input_values, scaler)
+def predict_with_model(model, input_values, scaler_X):
+    input_values_scaled = scale_input(input_values, scaler_X)
     prediction = model.predict(input_values_scaled)
     return prediction
 
 def main():
     st.title("Meine Streamlit App")
     st.header("Willkommen auf der Hauptseite Test")
+
+    # Anzeigen der Skalierungsfaktoren
+    st.write("Skalierungsfaktoren und Min-Werte für X:")
+    st.write("Skalierungsfaktoren:", scaler_X.scale_)
+    st.write("Min-Werte:", scaler_X.min_)
+
+    st.write("Skalierungsfaktoren und Min-Werte für Y:")
+    st.write("Skalierungsfaktoren:", scaler_Y.scale_)
+    st.write("Min-Werte:", scaler_Y.min_)
 
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
@@ -48,7 +64,7 @@ def main():
     # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
         # Vorhersage mit dem Modell machen
-        prediction = predict_with_model(model, values, scaler)
+        prediction = predict_with_model(model, values, scaler_X)
         # Anzeige der Vorhersage in einem Ausgabefeld
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
