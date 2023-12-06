@@ -39,7 +39,14 @@ def main():
     # Anzeigen der Skalierungsfaktoren
     st.write("Skalierungsfaktoren und Min-Werte für X:")
     st.write("Skalierungsfaktoren:", scaler_X)
-    
+        # Korrekte Anzeige der Skalierungsfaktoren und Min-Werte
+    st.write("Skalierungsfaktoren und Min-Werte für X:")
+    st.write("Skalierungsfaktoren:", scaler_X.scale_)
+    st.write("Min-Werte:", scaler_X.min_)
+
+    st.write("Skalierungsfaktoren und Min-Werte für Y:")
+    st.write("Skalierungsfaktoren:", scaler_Y.scale_)
+    st.write("Min-Werte:", scaler_Y.min_)
 
     st.write("Skalierungsfaktoren und Min-Werte für Y:")
     st.write("Skalierungsfaktoren:", scaler_Y)
