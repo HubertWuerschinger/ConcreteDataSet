@@ -20,7 +20,7 @@ scaler_X = load_scaler(scaler_X_filename)
 scaler_Y = load_scaler(scaler_Y_filename)
 
 def scale_input(input_values, scaler):
-    X_scaled = scaler.fit_transform(np.array(input_values))
+    X_scaled = scaler.fit_transform(input_values)
     return X_scaled
 
 def predict_with_model(model, input_values, scaler_X):
