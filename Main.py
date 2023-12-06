@@ -58,6 +58,7 @@ def main():
         "age": (1, 365)
     }
 
+
     values = []
     for var, (min_val, max_val) in variables.items():
         value = st.select_slider(f"{var.capitalize()} (Einheit)", range(min_val, max_val + 1))
@@ -68,7 +69,7 @@ def main():
     if st.button("Vorhersage machen"):
         # Skalierung der Eingabewerte
         input_values_scaled = scale_input(values, scaler_X)
-
+        st.write(input_values_scaled)
         # Vorhersage mit dem Modell machen
         prediction = model.predict(input_values_scaled)
 
