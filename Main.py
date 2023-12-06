@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-
+scaler = MinMaxScaler
 # Laden des trainierten Modells
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
@@ -10,13 +10,13 @@ model = pickle.load(open(filename, 'rb'))
 
 def load_scaler(filename):
     with open(filename, 'rb') as file:
-        scaler = pickle.load(file)
-    return scaler
+        scalervalues = pickle.load(file)
+    return scalervalues
 
 # Laden der Skalierer
-scaler_X = load_scaler('ScaleFaktorsX.sav')
-scaler_Y = load_scaler('ScaleFaktorsy.sav')
-
+scalervalues_X = load_scaler('ScaleFaktorsX.sav')
+scalervalues_Y = load_scaler('ScaleFaktorsy.sav')
+X = scaler.scalervalues_X()
 
 
 # Laden des Skalierers für X und Y
