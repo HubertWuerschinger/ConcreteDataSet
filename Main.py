@@ -62,8 +62,8 @@ def main():
     # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
         # Vorhersage mit dem Modell machen
-        X_scaled = scaler_X.fit_transform(input_values)
-        prediction = predict_with_model(model, values, X_scaled)
+        X_scaled = scaler_X*values
+        prediction = model.predict(X_scaled)
         # Anzeige der Vorhersage in einem Ausgabefeld
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
