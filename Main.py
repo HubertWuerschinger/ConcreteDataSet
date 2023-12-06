@@ -7,23 +7,16 @@ from sklearn.preprocessing import MinMaxScaler
 filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
-# Funktion zum Laden des Skalierers aus der Pickle-Datei
-def load_scaler(filename):
-    with open(filename, 'rb') as file:
-        scaler = pickle.load(file)
-    return scaler
+# Laden des Skalierers
+scaler_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei
+with open(scaler_filename, 'rb') as file:
+    scaler = pickle.load(file)
 
-# Funktion zum Anwenden der Skalierung auf die Eingabedaten
 def scale_input(input_values, scaler):
     X_scaled = scaler.transform(np.array([input_values]))
     return X_scaled
 
-# Funktion zur Vorhersage mit dem Modell
-def predict_with_model(model, input_values):
-    # Laden des Skalierers
-    scaler_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei
-    scaler = load_scaler(scaler_filename)
-
+def predict_with_model(model, input_values, scaler):
     input_values_scaled = scale_input(input_values, scaler)
     prediction = model.predict(input_values_scaled)
     return prediction
@@ -31,7 +24,7 @@ def predict_with_model(model, input_values):
 def main():
     st.title("Meine Streamlit App")
     st.header("Willkommen auf der Hauptseite Test")
-    
+
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
 
@@ -55,7 +48,7 @@ def main():
     # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
         # Vorhersage mit dem Modell machen
-        prediction = predict_with_model(model, values)
+        prediction = predict_with_model(model, values, scaler)
         # Anzeige der Vorhersage in einem Ausgabefeld
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
