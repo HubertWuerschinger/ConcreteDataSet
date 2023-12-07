@@ -22,7 +22,7 @@ def scale_input(input_values, scaler):
     return X_scaled
     
 def inverse_scale_output(output, scaler_y):
-    return scaler_Y.inverse_transform(np.array([output]).reshape(-1, 1))
+    return scaler_y.inverse_transform(np.array([output]).reshape(-1, 1))
 
 def main():
     st.title("Meine Streamlit App")
