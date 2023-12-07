@@ -18,7 +18,7 @@ scaler = load_scaler('ScaleFaktors_X.sav')
 scaler_Y = load_scaler('ScaleFaktorsy.sav')
 
 def scale_input(input_values, scaler):
-    X_scaled = scaler_X.transform(np.array([input_values]))
+    X_scaled = scaler.transform(np.array([input_values]))
     return X_scaled
 
 def main():
