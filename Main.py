@@ -60,7 +60,7 @@ def main():
    # Vorhersage-Button und Ausgabefeld
     if st.button("Vorhersage machen"):
         # Skalierung der Eingabewerte
-        input_values_scaled = scale_input(values, scaler_X)
+        input_values_scaled = scale_input(values, scaler)
         st.write(input_values_scaled)
         # Vorhersage mit dem Modell machen
         prediction = model.predict(input_values_scaled)
