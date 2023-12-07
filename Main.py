@@ -41,7 +41,7 @@ def main():
     }
 
 
-values = []
+    values = []
     for var, (min_val, max_val) in variables.items():
         value = st.select_slider(f"{var.capitalize()} (Einheit)", range(min_val, max_val + 1))
         values.append(value)
