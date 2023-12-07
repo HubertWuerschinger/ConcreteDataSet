@@ -25,7 +25,7 @@ def inverse_scale_output(output, scaler_y):
     return scaler_y.inverse_transform(np.array([output]).reshape(-1, 1))
 
 def main():
-    st.title("Meine Streamlit App")
+    st.title("Regressionsübung im ML Seminar, WS23/24")
     st.header("Prognose der Betonfestigkeit")
 
     # Abschnitt für SelectSlider-Elemente
