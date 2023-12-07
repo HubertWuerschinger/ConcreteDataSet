@@ -14,10 +14,10 @@ filename = 'finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 
 # Laden der Skalierer
-scaler_X = load_scaler('ScaleFaktorsX.sav')
+scaler = load_scaler('ScaleFaktors_X.sav')
 scaler_Y = load_scaler('ScaleFaktorsy.sav')
 
-def scale_input(input_values, scaler_X):
+def scale_input(input_values, scaler):
     X_scaled = scaler_X.transform(np.array([input_values]))
     return X_scaled
 
@@ -47,7 +47,7 @@ def main():
         values.append(value)
 
     if st.button("Vorhersage machen"):
-        input_values_scaled = scale_input(values, scaler_X)
+        input_values_scaled = scale_input(values, scaler)
         prediction = model.predict(input_values_scaled)
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
