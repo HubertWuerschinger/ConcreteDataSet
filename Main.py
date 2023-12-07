@@ -15,7 +15,7 @@ model = pickle.load(open(filename, 'rb'))
 
 # Laden der Skalierer
 scaler_X = load_scaler('ScaleFaktorsX.sav')
-scaler_Y = load_scaler('ScaleFaktorsY.sav')
+scaler_Y = load_scaler('ScaleFaktorsy.sav')
 
 def scale_input(input_values, scaler_X):
     X_scaled = scaler_X.transform(np.array([input_values]))
