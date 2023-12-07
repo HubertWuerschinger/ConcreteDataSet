@@ -15,11 +15,14 @@ model = pickle.load(open(filename, 'rb'))
 
 # Laden der Skalierer
 scaler = load_scaler('ScaleFaktors_X.sav')
-scaler_Y = load_scaler('ScaleFaktorsy.sav')
+scaler_y = load_scaler('ScaleFaktors_y.sav')
 
 def scale_input(input_values, scaler):
     X_scaled = scaler.transform(np.array([input_values]))
     return X_scaled
+    
+def inverse_scale_output(output, scaler_y):
+    return scaler_Y.inverse_transform(np.array([output]).reshape(-1, 1))
 
 def main():
     st.title("Meine Streamlit App")
@@ -48,7 +51,8 @@ def main():
 
     if st.button("Vorhersage machen"):
         input_values_scaled = scale_input(values, scaler)
-        prediction = model.predict(input_values_scaled)
+        prediction_scaled = model.predict(input_values_scaled)
+        prediction = inverse_scale_output(prediction_scaled, scaler_y)
         st.write("Vorhersageergebnis:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
 
