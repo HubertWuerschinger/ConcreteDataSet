@@ -16,7 +16,6 @@ def load_scaler(filename):
 # Laden der Skalierer
 scaler = load_scaler('ScaleFaktorsX.sav')
 scalervalues_Y = load_scaler('ScaleFaktorsy.sav')
-X = scaler.scalervalues_X()
 
 
 # Funktion zum Skalieren der Eingabedaten
