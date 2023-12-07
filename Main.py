@@ -14,16 +14,10 @@ def load_scaler(filename):
     return scalervalues
 
 # Laden der Skalierer
-scalervalues_X = load_scaler('ScaleFaktorsX.sav')
+scaler = load_scaler('ScaleFaktorsX.sav')
 scalervalues_Y = load_scaler('ScaleFaktorsy.sav')
 X = scaler.scalervalues_X()
 
-
-# Laden des Skalierers für X und Y
-#scaler_X_filename = 'ScaleFaktorsX.sav'  # Pfad zu Ihrer Pickle-Datei für X
-#scaler_Y_filename = 'ScaleFaktorsy.sav'  # Pfad zu Ihrer Pickle-Datei für Y
-#scaler_X = load_scaler(scaler_X_filename)
-#scaler_Y = load_scaler(scaler_Y_filename)
 
 # Funktion zum Skalieren der Eingabedaten
 def scale_input(input_values, scaler):
