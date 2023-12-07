@@ -34,23 +34,6 @@ def main():
     st.title("Meine Streamlit App")
     st.header("Willkommen auf der Hauptseite Test")
 
-    # Anzeigen der Skalierungsfaktoren
-    st.write("Skalierungsfaktoren und Min-Werte für X:")
-    st.write("Skalierungsfaktoren:", scaler_X)
-        # Korrekte Anzeige der Skalierungsfaktoren und Min-Werte
-    st.write("Skalierungsfaktoren und Min-Werte für X:")
-    st.write("Skalierungsfaktoren:", scaler_X.scale_)
-    st.write("Min-Werte:", scaler_X.min_)
-
-    if isinstance(scaler_X, MinMaxScaler):
-        st.write("Skalierungsfaktoren und Min-Werte für X:")
-        st.write("Skalierungsfaktoren:", scaler_X.scale_)
-        st.write("Min-Werte:", scaler_X.min_)
-
-    if isinstance(scaler_Y, MinMaxScaler):
-        st.write("Skalierungsfaktoren und Min-Werte für Y:")
-        st.write("Skalierungsfaktoren:", scaler_Y.scale_)
-        st.write("Min-Werte:", scaler_Y.min_)
 
     # Abschnitt für SelectSlider-Elemente
     st.header("Materialauswahl für Baumaterialien")
