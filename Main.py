@@ -26,10 +26,10 @@ def inverse_scale_output(output, scaler_y):
 
 def main():
     st.title("Meine Streamlit App")
-    st.header("Willkommen auf der Hauptseite Test")
+    st.header("Prognose der Betonfestigkeit")
 
     # Abschnitt für SelectSlider-Elemente
-    st.header("Materialauswahl für Baumaterialien")
+    st.header("Wählen Sie die Mengen Ihrer Betoninhaltsstoffe aus")
 
     # Variablen und ihre Bereichsgrenzen
     variables = {
@@ -53,7 +53,7 @@ def main():
         input_values_scaled = scale_input(values, scaler)
         prediction_scaled = model.predict(input_values_scaled)
         prediction = inverse_scale_output(prediction_scaled, scaler_y)
-        st.write("Vorhersageergebnis:")
+        st.write("Prognostizierte Festigkeit Ihres Betons in MPa:")
         st.text_area("Ergebnis", f"{prediction}", height=100)
 
 if __name__ == "__main__":
